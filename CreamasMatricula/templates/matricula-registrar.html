@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery.ui.all.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery-ui-1.9.2.custom.css">
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="all" />
+<script src="{{ STATIC_URL }}js/jquery-1.6.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/jquery/jquery-ui.custom.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/ajax.util.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/view.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+		$( "#id_fechaNacimiento" ).datepicker({ dateFormat: 'dd/mm/yy' });
+	});
+	function seleccionarAlumno(id, nombre, tutor, telefono, telefonoEmergencia, fechaNacimiento, email){
+		$('#id_alumno').val(nombre);
+		$('#id_tutor').val(tutor);	
+		$('#id_telefono').val(telefono);
+		$('#id_telefonoEmergencia').val(telefonoEmergencia);
+		$('#id_fechaNacimiento').val(fechaNacimiento);
+		$('#id_email').val(email);
+		$('#id_idAlumno').val(id);
+	}
+	function filtroAlumnos(){
+		var caracteristicas = "height=700,width=800,scrollTo,resizable=1,scrollbars=1,location=0";
+      	nueva=window.open("matricula-listar-alumnos", 'Popup', caracteristicas);
+	}
+</script>
+</head>
+
+
+<body>
+<table width="85%" align="center">
+	<tr>
+		<td colspan="2" height="90px">
+			{% include "cabecera.html" %}
+		</td>
+	</tr>
+	<tr>
+		<td width="25%" valign="top" >
+			{% include "menu.html" %}
+		</td>
+		<td valign="top">
+			<h2>Detalle Matr&iacute;cula</h2>
+
+			<div id="form-registroMatricula">
+				<form id="registroMatricula-form" action="/creamas/registrar_matricula" method="post">
+					<div class="left">
+						<p>
+							<label for="id_semestre" style="font-weight:bold;">{{form.semestre.label}}(*)</label>
+							{{form.semestre}}
+						</p>
+						<p>
+							<label for="id_alumno" style="font-weight:bold;">{{form.alumno.label}}(*)</label>
+							{{form.idAlumno}}
+							{{form.alumno}}
+							<button type="button" onclick="javascript:filtroAlumnos()">...</button>
+						</p>
+						<p>
+							<label for="id_taller" style="font-weight:bold;">{{form.taller.label}}(*)</label>
+							{{form.taller}}
+						</p>
+						<hr width="100%"/>
+						<p>
+							<label for="id_tutor" style="font-weight:bold;">{{form.tutor.label}}(*)</label>
+							{{form.tutor}}
+						</p>
+						<p>
+							<label for="id_telefono" style="font-weight:bold;">{{form.telefono.label}}(*)</label>
+							{{form.telefono}}
+						</p>
+						<p>
+							<label for="id_fechaNacimiento" style="font-weight:bold;">{{form.fechaNacimiento.label}}(*)</label>
+							{{form.fechaNacimiento}}
+						</p>
+					</div>
+				</form>
+				<div class="clear"></div>
+				<table width="100%">
+				<tr>
+					<td>
+						<p align="left">
+							<button type="button" onclick="javascript: document.forms[0].submit();">Guardar</button><br/>
+							{% if error %}
+							<label for="mensaje" style="color:red;">{{error}}</label>
+							{% endif %}
+							{% if mensaje %}
+							<script type="text/javascript">
+								alert('Se realizó la matrícula');
+							</script>
+							<label for="mensaje">{{mensaje}}</label>
+							{% endif %}
+						</p>
+					<td>
+					<td><p align="center" id="mensaje"></p></td>
+				</tr>
+				</table>
+			</div>
+		
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,5 @@
+> python manage.py dumpdata matricula > bk_matricula.json
+# Se realizan cambios en el modelo
+> python manage.py sqlclear matricula | python manage.py dbshell
+> python manage.py syncdb
+> python manage.py loaddata bk_matricula.json

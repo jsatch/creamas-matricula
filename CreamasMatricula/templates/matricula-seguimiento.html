@@ -1,0 +1,105 @@
+{% load matricula_filters %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery.ui.all.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery-ui-1.9.2.custom.css">
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="all" />
+<script src="{{ STATIC_URL }}js/jquery-1.6.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/jquery/jquery-ui.custom.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/ajax.util.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/view.js" type="text/javascript"></script>
+<style type="text/css">
+#reporte-seguimiento {
+   width:800px;
+   margin:0 auto;
+}
+#left_col {
+   float:left;
+   width:400px;
+}
+#right_col {
+   float:right;
+   width:400px;
+}
+</style>
+</head>
+
+
+<body>
+<table width="85%" align="center">
+	<tr>
+		<td colspan="2" height="90px">
+			{% include "cabecera.html" %}
+		</td>
+	</tr>
+	<tr>
+		<td width="25%" valign="top" >
+			{% include "menu.html" %}
+		</td>
+		<td valign="top">
+			<h2>Reporte Seguimiento</h2>
+
+			<div id="reporte-seguimiento">
+				<div id="left_col">
+					<h3>Talleres</h3>
+					{% for key, lista_talleres in talleres.items %}
+					<h4>{{key}}</h4>
+					<table class="formato-tabla">
+						<thead>
+							<tr>
+								<td>Taller</td>
+								<td>Nro Creandos</td>
+								<td>Disponibles</td>
+								<td>Matriculados</td>
+								<td>Cupos</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for taller in lista_talleres %}
+							<tr style="background-color: {{taller.numeroVacantes|porcentaje:taller.numeroInscritos}};">
+								<td>{{taller.nombre}}</td>
+								<td>{{taller.numeroCreandos}}</td>
+								<td>{{taller.numeroVacantes|substract:taller.numeroInscritos}}</td>
+								<td>{{taller.numeroInscritos}}</td>
+								<td>{{taller.numeroVacantes}}</td>
+							</td>
+							{% endfor %}
+						</tbody>
+					</table>
+					{% endfor %}
+				</div>
+				<div id="right_col">
+					<h3>Clases</h3>
+					{% for key, lista_clases in clases.items %}
+					<h4>{{key}}</h4>
+					<table class="formato-tabla">
+						<thead>
+							<tr>
+								<td>A&ntilde;o</td>
+								<td>Nro Creandos</td>
+								<td>Disponibles</td>
+								<td>Matriculados</td>
+								<td>Cupos</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for clase in lista_clases %}
+							<tr style="background-color: {{clase.numeroVacantes|porcentaje:clase.numeroInscritos}};">
+								<td>{{clase.grado.nombre}}</td>
+								<td>{{clase.numeroCreandos}}</td>
+								<td>{{clase.numeroVacantes|substract:clase.numeroInscritos}}</td>
+								<td>{{clase.numeroInscritos}}</td>
+								<td>{{clase.numeroVacantes}}</td>
+							</td>
+							{% endfor %}
+						</tbody>
+					</table>
+					{% endfor %}
+				</div>
+			</div>
+		
+		</td>
+	</tr>
+</table>

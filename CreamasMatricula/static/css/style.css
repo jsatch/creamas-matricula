@@ -1,0 +1,417 @@
+*{
+	font-family: "Arial" !important;
+}
+body{
+	font-size: 12px;
+	color: #666;
+}
+a img{
+	border: none;
+}
+#data-tracking{
+	vertical-align: middle;
+}
+.right{
+	float: right;
+}
+.left{
+	float: left;
+}
+.short{
+	width: 40px !important;
+}
+.medium{
+	width: 80px !important;
+}
+.margen{
+	margin-bottom: 10px;
+	padding-top: 10px;
+}
+.clear{
+	clear: both;
+}
+.hidden{
+	display: none;
+}
+.vhidden{
+	visibility: hidden;
+	display: none;
+}
+.labelw{
+	width: auto !important;
+}
+
+.error{
+font-weight: bold;
+color: red;
+}
+/* Header */
+#header{
+	background: url(../images/brightstar.png) left bottom no-repeat;
+	height: 120px;
+	margin-top:10px;
+	margin-bottom: 30px;
+}
+#menu-head{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: right;
+	margin-top: 50px;
+	border-radius: 10px;
+	background: #777;
+}
+#bienvenido{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+
+#menu-head li{
+	float: left;
+}
+#menu-head li a{
+	display: block;
+	padding: 5px 20px;
+	background: #777;
+	color: #FFF;
+	font-weight: bold;
+	border-radius: 10px;
+	text-decoration: none;
+}
+#menu-head li a:hover, .head-active{
+	background: #666 !important;
+}
+/* Botones */
+button, .button{
+	background: #999;
+	color: white;
+	border: 1px solid #CCC;
+	font-weight: bold;
+	padding: 2px 12px;
+	height: 25px;
+	cursor: pointer;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: bold;
+	margin-right: 15px;
+}
+/* Menu */
+#menu{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 250px;
+}
+#menu li{	
+	position: relative;
+	overflow: hidden;
+}
+#menu li span{
+	display: block;
+	border-bottom: 1px solid #CCC;	
+	color: #333;
+	font-weight: bold;
+	padding: 10px 10px 10px 40px;
+	cursor: pointer;
+	font-size: 13px;
+}
+#menu div{
+	width: 24px;
+	height: 26px;
+	background: url(../images/menu-items.png) no-repeat;
+	position: absolute;
+	top: 7px;
+	left: 7px;
+}
+#menu span:hover div, .active div{
+	background-position-y: -24px !important;
+}
+#menu div.index{
+	background-position: -153px 0px;
+}
+#menu div.localizacion{
+	background-position: 0px 0px;
+}
+#menu div.puntosInteres{
+	background-position: -127px 0px;
+}
+#menu div.geocercas{
+	background-position: -101px 0px;
+}
+#menu div.tracking{
+	background-position: -179px 0px;
+}
+#menu div.administracion{
+	background-position: -25px 0px;
+}
+#menu div.reporte{
+	background-position: -76px 0px;
+}
+#menu li span a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #333;
+	text-decoration: none;
+}
+#menu li span:hover, .active{
+	background: #103391;
+	color: #FFF !important;
+}
+#menu li span:hover a, .active a{
+	color: #FFF !important;
+}
+/* Submenu */
+.submenu{
+	list-style: none;
+	border-bottom: 1px solid #CCC;
+	display: none;
+}
+.submenu a{
+	text-decoration: none;
+	color: #333;
+	display: block;
+	height: 20px;
+	padding: 5px 4px;
+	font-size: 12px;
+}
+.submenu a:hover{
+	font-weight: bold;
+	color: #103391;
+}
+/* Contenido */
+section{
+	
+}
+h2{
+	color: #103391;
+}
+form{
+	margin-left: 40px;
+}
+form{
+	width: 70%;
+}
+form p, #formulario p{
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+form label, #formulario label{
+	width: 150px;
+	display: inline-block;
+}
+form input[type=text], #formulario input[type=text]{
+	width: 170px;
+}
+form input[type=submit], #formulario input[type=submit]{
+	background: #030303;
+	color: #CCC;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	cursor: pointer;
+	float: right;
+}
+#formulario button, button, .button{
+	cursor: pointer;
+}
+
+form input[type=submit]:hover, #formulario input[type=submit]:hover{
+	color: #FFF;
+}
+/*Estilos para tablas*/
+.formato-tabla{
+	width: 100%;
+}
+.button{
+	display: block;
+	float: left;
+	padding: 4px 12px 0px 12px !important;
+	height: 20px;
+	margin-right: 15px;
+}
+.formato-tabla thead td{
+	border-bottom: 2px solid #103391;
+	text-align: center;
+	color: #333;
+	font-weight: bold;
+}
+.formato-tabla td{
+	border-bottom: 2px solid #CCC;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 10px;
+	text-align: center;
+	color: #555;
+}
+.formato-tabla tbody tr:hover{
+	background: #FFF4DF;
+	color: #555;
+}
+/* Combo Box */
+#agregados{
+	margin-left: 103px;
+	width: 208px;
+	position: relative;
+	top: -20px;
+}
+#agregados p{
+	margin: 10px 0;
+}
+.add{
+	color: red;
+	display: inline-block;
+	margin-left:10px;
+	margin-left: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+/* Formato de Tabla para detalles*/
+
+.formato-tabla-detalle{
+	width: 100%;
+}
+.button{
+	display: block;
+	float: left;
+	padding: 4px 12px 0px 12px !important;
+	height: 20px;
+	margin-right: 15px;
+}
+.formato-tabla-detalle thead td{
+	border-bottom: 2px solid #103391;
+	text-align: center;
+	color: #333;
+	font-weight: bold;
+}
+.formato-tabla-detalle td{
+	border-bottom: 2px solid #CCC;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	padding-left: 10px;
+	text-align: center;
+	color: #555;
+}
+.formato-tabla-detalle tbody tr:hover{
+	background: #FFF4DF;
+	color: #555;
+}
+/* Combo Box */
+#agregados{
+	margin-left: 103px;
+	width: 208px;
+	position: relative;
+	top: -20px;
+}
+#agregados p{
+	margin: 10px 0;
+}
+.add{
+	color: red;
+	display: inline-block;
+	margin-left:10px;
+	margin-left: 10px;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+/*  */
+
+
+/* Puntos de Interes */
+.columns{
+	width: 85% !important;
+	margin-left: 0 !important;
+}
+.columns label{
+	width: 100px !important;
+}
+/* Mensajes */
+.success{
+	color: #008000 !important;
+}
+.error{
+	font-weight: bold;
+	color: red;
+}
+/* Tracking */
+#registrar-tracking textarea{
+	width: 300px;
+}
+
+#aToolTip {
+	position: absolute;
+	display: none;
+	z-index: 50000;
+	width: auto;
+}
+
+	#aToolTip .aToolTipContent {
+		position:relative;
+		margin:0;
+		padding:0;
+	}
+	
+/*.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
+/* 
+	END: Required Styles
+*/
+/**
+	Default Theme
+*/
+.defaultTheme {
+	border:2px solid #444;
+	background:#555;
+	color:#fff;
+	margin:0;
+	padding:6px 12px;	
+	
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	-khtml-border-radius: 12px;
+	border-radius: 12px;
+	
+	-moz-box-shadow: 2px 2px 5px #111; /* for Firefox 3.5+ */
+	-webkit-box-shadow: 2px 2px 5px #111; /* for Safari and Chrome */
+	box-shadow: 2px 2px 5px #111; /* for Safari and Chrome */
+}
+	
+.defaultTheme #aToolTipCloseBtn {
+	display:block;
+	height:18px;
+	width:18px;
+	background:url(../images/closeBtn.png) no-repeat;
+	text-indent:-9999px;
+	outline:none;
+	position:absolute;
+	top:-20px;
+	right:-30px;
+	margin:2px;
+	padding:4px;
+}
+
+#lista-productos .ui-widget-content{
+	border:none;
+}
+
+
+.ui-multiselect div.available{
+	border-left:none;
+}
+
+.ui-accordion  .ui-accordion-header{
+	display:visible;
+}
+
+tfoot {
+    display: table-header-group;
+}

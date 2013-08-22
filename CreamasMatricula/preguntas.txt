@@ -1,0 +1,35 @@
+1. Taller es por niveles o por grados??
+2. Los talleres es por colegio?
+
+TODO
+*. A Clase se le debe poner semestre?? FALTA
+*. Falta validar que no se deje matricular si vacantes para clase o taller están llenas
+
+
+Puntos Anteriores:
+1. Clases: estados; abierto / cerrado REALIZADO
+2. Aparezca el numero de Creandos que van a ensenar en el taller REALIZADO
+3. Poner vacantes por clase de mate y taller REALIZADO
+4. Tutor en lugar de nombre del padre REALIZADO
+5. Poder ingresar alumnos a la bd en caso no se encuentren el la misma (los nuevos) REALIZADO
+6. El software debe poder importar la info de los talleres y clases de mate. DESEABLE
+7. Para buscar por nombre debe tener los otros filtros completos (como obligatorio deberian de ser nivel, grado) PENDIENTE (CORREGIDO)
+8. Diferentes perfiles o accesos: administrador, moniteador de clases, visualizador (el primer y tercero ven el avance de matricula). POR TERMINAR (punto 25.)
+9. Se debe monitorear las vacantes de mate y taller (contador en ambos). REALIZADO
+10. El administrador (pueden logearse varios a la vez) puede aumentar las vacantes. REALIZADO
+11. Se debe deshabilitar cuando se cierren un taller (se acaba la vacante). PENDIENTE (no debe aparecer en la lista)  ----> FALTA
+12. El digitador lo unico q no puede modificar es nivel, grado, seccion (eso lo debe de ver el administrador) REALIZADO
+13. En el login se ingresa el cole que sirve para filtrar solo en el caso de digitador y visualizador. REALIZADO
+14. Considerar: nombre completo de nino, crear entidad colegio (nombre, direccion, telefonos, directores, numero de ninos inscritos en el mismo). REALIZADO
+
+Puntos Nuevos:
+15. Campos Obligatorio del niño (alumno): Tutor / Teléfono de emergencia / Fecha de Nacimiento (X)
+16. No considerar campo Email del niño (para nada por el momento). (X)
+17. Crear Tabla producto de la relacion de colegio por semestre por relacion de muchos a muchos. 
+18. Que aparezca un estado de matriculado en el listado de niños y que no te deje seleccionarlo. 
+19. Mensaje de confirmacion de matricula (La matricula de _____ fue realizada con éxito). (X)
+20. Marca de colores sobre cantidad de matriculados pero cuando pase mas del 50% (verde(10-50%), amarillo(50-80%) y rojo) (X)
+21. En el reporte se debe mostrar el numero de Creandos que van a enseñar en el taller. (X)
+22. Poder importar a los alumnos (niños).
+23. Perfil Visualizador debe: Ver reportes y ver matriculados.
+24. Incluir logo de Crea+ en el menú principal. (X)

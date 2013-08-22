@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="{{ STATIC_URL }}css/jquery.dataTables.css" rel="stylesheet" media="all" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery.ui.all.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery/jquery-ui-1.9.2.custom.css">
+<link href="{{ STATIC_URL }}css/jquery.dataTables.css" rel="stylesheet" media="all" />
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="all" />
+<script src="{{ STATIC_URL }}js/jquery-1.6.js" type="text/javascript"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.dataTables.js"></script>
+<script src="{{ STATIC_URL }}js/jquery/jquery-ui.custom.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/ajax.util.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/view.js" type="text/javascript"></script>
+<title>::Listado Alumnos Matriculados | Crea+::</title>
+</head>
+<body>
+			<h2>B&uacute;squeda de Alumnos</h2>
+			<div id="list-alumno">
+				<form id="listadoAlumnos-form" action="/creamas/matricula-modificar-listar" method="post">
+					<div>
+						<table>
+							<tr>
+								<td>
+									<label for="id_grado" style="font-weight:bold;">{{form.grado.label}}(*)</label>{{form.grado}}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<label for="id_nombre">{{form.nombre.label}}</label>{{form.nombre}}
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="right">
+									<button type="button" onclick="javascript: document.forms[0].submit();">Filtrar</button>
+									<button type="button" onclick="javascript: window.location= '/creamas/matricula-registrar'">Cancelar</button>
+								</td>	
+							</tr>
+						</table>
+					</div>	
+				</form>
+				<br/><br/>
+				<table class="formato-tabla" cellspacing="0" id="tabla">
+					<thead>
+						<tr>
+							<td>Nombre</td>
+							<td>Grado</td>
+							<td>Secci&oacute;n</td>
+							<td>Taller</td>
+							<td>Acción</td>
+						</tr>
+					</thead>
+					<tbody id="data-alumno">
+						{% if listado_alumnos_matriculados %}
+							{% for matricula in listado_alumnos_matriculados %}
+								<tr>
+									<td>{{matricula.alumno.nombreCompleto}}</td>
+									<td>{{matricula.alumno.grado}}</td>
+									<td>{{matricula.alumno.seccion}}</td>
+									<td>{{matricula.taller.nombre}}</td>
+									<td><a href="/creamas/matricula-modificar/{{matricula.id}}" >Modificar</a>
+										<a href="/creamas/matricula-eliminar/{{matricula.id}}" onclick="">Eliminar</a></td>
+								</tr>
+							{% empty %}
+								<tr>
+									<td colspan="5">No hay matriculados</td>
+								</tr>
+							{% endfor %}
+
+						{% endif %}
+					</tbody>
+				</table>	
+			</div>
+</body>
+</html>
