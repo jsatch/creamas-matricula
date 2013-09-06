@@ -186,7 +186,8 @@ def modificacion_matricula(request, idmatricula):
 def guardar_matricula(request):
 	if request.method == 'POST':
 		colegio = request.session['colegio']
-		matriculaForm = MatriculaForm(colegio,request.POST)
+		semestre = Semestre.objects.filter(estado__exact='A')[0]
+		matriculaForm = MatriculaForm(colegio,semestre,request.POST)
 		if matriculaForm.is_valid():
 			
 			semestre = matriculaForm.cleaned_data['semestre']
@@ -233,12 +234,10 @@ def guardar_matricula(request):
 			clase.save()
 
 			
-			matriculaForm = MatriculaForm(colegio)
+			matriculaForm = MatriculaForm(colegio, semestre)
 
 			mensaje = "Matricula guardada exitosamente"
 		else:
-			
-			#matriculaForm = MatriculaForm(colegio)
 			mensaje = "Error procesando formulario, llene todos los campos"
 			return render_to_response('matricula-registrar.html', {'form':matriculaForm, 'error':mensaje, 'seguridad':request.session['seguridad']}, context_instance=RequestContext(request))
 
@@ -247,15 +246,16 @@ def guardar_matricula(request):
 @csrf_exempt
 def modificacion_matricula(request, idmatricula):
 	colegio = request.session['colegio']
+	semestre = Semestre.objects.filter(estado__exact='A')[0]
 	matricula = Matricula.objects.get(pk=idmatricula)
 	if request.method == 'GET':
 		
 		print matricula.semestre.nombre
-		matriculaForm = MatriculaForm(colegio)
+		matriculaForm = MatriculaForm(colegio, semestre)
 		#matriculaForm.taller.value = matricula.taller
 		return render_to_response('matricula-modificar.html', {'matricula':matricula,'form':matriculaForm}, context_instance=RequestContext(request))
 	else:
-		#matriculaForm = MatriculaForm(colegio,request.POST)
+		#matriculaForm = MatriculaForm(colegio, semestre, request.POST)
 
 		taller_id = request.POST['taller']
 		taller_nuevo = Taller.objects.get(pk=taller_id)
