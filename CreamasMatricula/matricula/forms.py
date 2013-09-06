@@ -19,9 +19,9 @@ class MatriculaForm(forms.Form):
 	fechaNacimiento = forms.DateField(label='Fecha Nacimiento', widget=AdminDateWidget,required=False)
 	email = forms.EmailField(label='Email', required=False)
 
-	def __init__(self, colegio, *args, **kwargs):
+	def __init__(self, colegio, semestre, *args, **kwargs):
 		super(MatriculaForm, self).__init__(*args, **kwargs)
-		self.fields['taller'] = forms.ModelChoiceField(label='Taller', queryset=Taller.objects.filter(estado__exact=ABIERTO).filter(colegio__exact=colegio).filter(numeroVacantes__gt=F('numeroInscritos')),empty_label="----Seleccionar----")
+		self.fields['taller'] = forms.ModelChoiceField(label='Taller', queryset=Taller.objects.filter(estado__exact=ABIERTO).filter(colegio__exact=colegio).filter(numeroVacantes__gt=F('numeroInscritos')).filter(semestre__exact=semestre),empty_label="----Seleccionar----")
 
 	#def __init__(self, colegio):
 	#	self.colegio = colegio

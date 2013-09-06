@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db_creamas',                      # Or path to database file if using sqlite3.
+        'NAME': 'db_creamas_bk',                      # Or path to database file if using sqlite3.
         'USER': 'creamas',                      # Not used with sqlite3.
         'PASSWORD': 'creamas',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -70,8 +70,8 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    #"/home/devos/Aplicaciones/Creamas/static",
-    "/Users/hernan/Desarrollo/Python/wks/wksCreamasMatricula/CreamasMatricula/static",
+    "/home/devos/Aplicaciones/creamas/CreamasMatricula/Creamas/static",
+    #"/Users/hernan/Desarrollo/Python/wks/wksCreamasMatricula/CreamasMatricula/static",
 )
 
 # List of finder classes that know how to find static files in
@@ -111,8 +111,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    #"/home/devos/Aplicaciones/Creamas/templates",
-    "/Users/hernan/Desarrollo/Python/wks/wksCreamasMatricula/CreamasMatricula/templates",
+    "/home/devos/Aplicaciones/creamas/CreamasMatricula/templates",
+    #/Users/hernan/Desarrollo/Python/wks/wksCreamasMatricula/CreamasMatricula/templates",
 )
 
 INSTALLED_APPS = (

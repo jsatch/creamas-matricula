@@ -18,23 +18,23 @@ urlpatterns = patterns('',
 
 	url(r'^admin/', include(admin.site.urls)),
 	url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-	url(r'^creamas/login$', 'matricula.views.loginUsuario'),
+	url(r'^login$', 'matricula.views.loginUsuario'),
 	#url(r'^creamas/matricula$', 'matricula.views.listado_matricula'), deprecated
-	url(r'^creamas/matricula-registrar$', 'matricula.views.registro_matricula'),
-	url(r'^creamas/matricula-registrar/(\d+)$', 'matricula.views.modificacion_matricula'),
-	url(r'^creamas/matricula-listar-alumnos$', 'matricula.views.listado_alumnos'),
-	url(r'^creamas/matricula-registrar-alumno$', 'matricula.views.registro_alumno'),
-	url(r'^creamas/matricula-seguimiento$', 'matricula.views.reporte_seguimiento'),
-	url(r'^creamas/matricula-reporte$', 'matricula.views.reporte_matricula'),
-	url(r'^creamas/logout$', 'matricula.views.logout_matricula'),
+	url(r'^matricula-registrar$', 'matricula.views.registro_matricula'),
+	url(r'^matricula-registrar/(\d+)$', 'matricula.views.modificacion_matricula'),
+	url(r'^matricula-listar-alumnos$', 'matricula.views.listado_alumnos'),
+	url(r'^matricula-registrar-alumno$', 'matricula.views.registro_alumno'),
+	url(r'^matricula-seguimiento$', 'matricula.views.reporte_seguimiento'),
+	url(r'^matricula-reporte$', 'matricula.views.reporte_matricula'),
+	url(r'^logout$', 'matricula.views.logout_matricula'),
 
-	url(r'^creamas/registrar_matricula$', 'matricula.views.guardar_matricula'),
+	url(r'^registrar_matricula$', 'matricula.views.guardar_matricula'),
 	#Backend
-	url(r'^creamas/listar_matricula', 'matricula.views.back_listar_matricula'),
+	url(r'^listar_matricula', 'matricula.views.back_listar_matricula'),
 
 	#Modificacion de matricula
 	#url(r'^creamas/matricula-listar$', 'matricula.views.listado_matricula')
-	url(r'^creamas/matricula-modificar-listar$', 'matricula.views.listado_matricula'),
-	url(r'^creamas/matricula-modificar/(\d+)$', 'matricula.views.modificacion_matricula'),
-	url(r'^creamas/matricula-eliminar/(\d+)$', 'matricula.views.eliminar_matricula'),
+	url(r'^matricula-modificar-listar$', 'matricula.views.listado_matricula'),
+	url(r'^matricula-modificar/(\d+)$', 'matricula.views.modificacion_matricula'),
+	url(r'^matricula-eliminar/(\d+)$', 'matricula.views.eliminar_matricula'),
 )

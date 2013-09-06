@@ -115,11 +115,12 @@ def listado_alumnos(request):
 			grado = filtroAlumnosForm.cleaned_data['grado']
 			nombre = filtroAlumnosForm.cleaned_data['nombre']
 			colegio = request.session['colegio']
+			semestre = Semestre.objects.filter(estado__exact='A')[0]
 
 			if grado == None:
-				listadoAlumnos = Alumno.objects.filter(nombreCompleto__icontains=nombre).filter(colegio__exact=colegio)
+				listadoAlumnos = Alumno.objects.filter(nombreCompleto__icontains=nombre).filter(colegio__exact=colegio).filter(semestre__exact=semestre)
 			else:
-				listadoAlumnos = Alumno.objects.filter(grado__exact=grado).filter(nombreCompleto__icontains=nombre).filter(colegio__exact=colegio)
+				listadoAlumnos = Alumno.objects.filter(grado__exact=grado).filter(nombreCompleto__icontains=nombre).filter(colegio__exact=colegio).filter(semestre__exact=semestre)
 			
 
 		return render_to_response('matricula-listar-alumnos.html', {'form':filtroAlumnosForm, 'listado_alumnos': listadoAlumnos}, context_instance=RequestContext(request))
@@ -165,7 +166,8 @@ def registro_alumno(request):
 def registro_matricula(request):
 	seguridad = request.session['seguridad']
 	colegio = request.session['colegio']
-	matriculaForm = MatriculaForm(colegio)
+	semestre = Semestre.objects.filter(estado__exact='A')[0]
+	matriculaForm = MatriculaForm(colegio, semestre)
 
 	return render_to_response('matricula-registrar.html', {'form':matriculaForm, 'seguridad':seguridad}, context_instance=RequestContext(request))
 
@@ -364,3 +366,18 @@ def reporte_matricula(request):
 	lista_matricula = Matricula.objects.all();
 
 	return render_to_response('matricula-reporte.html', {'lista_matricula':lista_matricula, 'seguridad':seguridad}, context_instance=RequestContext(request))
+
+def migrar_alumnos_semestre(request):
+	from matricula.models import Semestre, Alumno, NOMATRICULADO
+	semestre = Semestre.objects.filter(estado__exact='A')[0]
+	nombre_semestre_anterior = "2013-I"
+
+	semestre = Semestre.objects.filter(estado__exact='A')[0]
+	semestre_ant = Semestre.objects.filter(nombre__exact=nombre_semestre_anterior)[0]
+
+	listado_alumnos = Alumno.objects.filter(semestre__exact=semestre_ant)
+	for alumno in listado_alumnos:
+		alumno.pk = None
+		alumno.semestre = semestre
+		alumno.estado = NOMATRICULADO
+		alumno.save()
