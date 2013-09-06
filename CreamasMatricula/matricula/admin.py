@@ -13,8 +13,11 @@ class AlumnoAdmin(admin.ModelAdmin):
     list_display = ('nombreCompleto', 'colegio', 'semestre')
     list_filter = ('semestre', 'colegio')
 
+class SemestreAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'estado')
+
 admin.site.register(Nivel)
-admin.site.register(Semestre)
+admin.site.register(Semestre, SemestreAdmin)
 admin.site.register(Usuario)
 admin.site.register(Grado)
 admin.site.register(Seccion)
